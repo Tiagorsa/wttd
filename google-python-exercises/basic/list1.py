@@ -60,10 +60,9 @@ def front_x(words):
 
 def sort_last(tuples):
     # +++your code here+++
-    def segundElement(item):
-        return item[-1]
+    return sorted(tuples, key=lambda item: item[-1])
 
-    return sorted(tuples, key=segundElement)
+ #key - itemgetter(-1)
 
 
 # Simple provided test() function used in main() to print

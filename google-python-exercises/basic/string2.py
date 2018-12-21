@@ -48,19 +48,18 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
+    # Separa as string
+    a_front, a_back = split_odd(a)
+    b_front, b_back = split_odd(b)
+    return ''.join((a_front, b_front, a_back, b_back))
 
-    # a_front, a_back = split_odd(a)
-    # b_front, b_back = split_odd(b)
-
-    return split_odd(a)[0]+split_odd(b)[0]+split_odd(a)[1]+split_odd(b)[1]
+    #return split_odd(a)[0]+split_odd(b)[0]+split_odd(a)[1]+split_odd(b)[1]
 
 
 
 def split_odd(par_str):
-
-    pos_split = (len(par_str) // 2)
-    if len(par_str) % 2 != 0:
-        pos_split += 1
+    # Ja munda a partir da aula
+    pos_split = (len(par_str) // 2) + (len(par_str) % 2)
     return par_str[:pos_split], par_str[pos_split:]
 
 

@@ -25,10 +25,10 @@
 # and donuts(23) returns 'Number of donuts: many'
 def donuts(count):
     # ++ your code here+++
-    s_rt = ["Number of donuts:", str(count)]
-    if (int(count)) >= 10:
-        s_rt[1] = 'many'
-    return " ".join(s_rt)
+    msg = ['Number of donuts:', str(count)]
+    if (count) >= 10:
+        msg[1] = 'many'
+    return ' '.join(msg)
 
 
 # B. both_ends
