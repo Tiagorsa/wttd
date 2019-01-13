@@ -2,7 +2,10 @@
 
 Turma WTTD - Dezembro 2018
 
+[![Build Status](https://www.travis-ci.org/Tiagorsa/wttd.svg?branch=master)](https://www.travis-ci.org/Tiagorsa/wttd)
+
 Exercicio Eventex
+
 
 cd wtdd
 python -m venv .wttd
