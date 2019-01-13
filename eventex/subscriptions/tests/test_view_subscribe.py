@@ -3,7 +3,7 @@ from django.test import TestCase
 from eventex.subscriptions.forms import SubscriptionForm
 
 
-class SubscribeTest(TestCase):
+class SubscribeGet(TestCase):
     def setUp(self):
         self.resp = self.client.get('/inscricao/')
 
@@ -38,7 +38,7 @@ class SubscribeTest(TestCase):
         self.assertSequenceEqual(['name', 'cpf', 'email', 'phone'], list(form.fields))
 
 
-class SubscribePostTest(TestCase):
+class SubscribePostValid(TestCase):
     def setUp(self):
         data = dict(name='Tiago Sá', cpf='12345678901', email='tiagosa@hotmail.com', phone='91-98424-5276')
         self.resp = self.client.post('/inscricao/', data)
@@ -49,36 +49,9 @@ class SubscribePostTest(TestCase):
     def test_send_subscribe_email(self):
         self.assertEqual(1, len(mail.outbox))
 
-    def test_subcripton_email_subject(self):
-        email = mail.outbox[0]
-        expect = 'Confirmação de inscrição'
-
-        self.assertEqual(expect, email.subject)
-
-    def test_subcripton_email_from(self):
-        email = mail.outbox[0]
-        expect = 'contato@eventex.com.br'
-
-        self.assertEqual(expect, email.from_email)
-
-    def test_subcripton_email_to(self):
-        email = mail.outbox[0]
-        expect = ['contato@eventex.com.br', 'tiagosa@hotmail.com']
-
-        self.assertEqual(expect, email.to)
 
 
-    def test_subscription_body(self):
-        email = mail.outbox[0]
-
-        self.assertIn('Tiago Sá', email.body)
-        self.assertIn('12345678901', email.body)
-        self.assertIn('tiagosa@hotmail.com', email.body)
-        self.assertIn('91-98424-5276', email.body)
-
-
-
-class SubscribeInvalidPost(TestCase):
+class SubscribePostInvalid(TestCase):
     def setUp(self):
         self.resp = self.client.post('/inscricao/', {})
 
