@@ -1,13 +1,13 @@
 Olá Tudo Bem!
-Muito obrigo por se isncrver no Envetex.
+Muito obrigado por se inscrever no Eventex.
 
-Nome: {{ name }}
-CPF: {{ cpf }}
-Email: {{ email }}
-Telefone: {{ phone }}
+Nome: {{ subscription.name }}
+CPF: {{ subscription.cpf }}
+Email: {{ subscription.email }}
+Telefone: {{ subscription.phone }}
 
 Em até 48 horas úteis, a nossa equipe entrará em contato com você.
 
 Atenciosamente,
 
-Gerente do evento
+Gerência do evento
