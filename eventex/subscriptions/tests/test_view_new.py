@@ -77,7 +77,7 @@ class SubscriptionsNewPostInvalid(TestCase):
     def test_dont_save_subscritions(self):
         self.assertFalse(Subscription.objects.exists())
 
-class TemplateRegressuibsTest(TestCase):
+class TemplateRegressionTest(TestCase):
     def test_template_has_non_field_errors(self):
         invalid_data = dict(name='Tiago Sá', cpf='12345678901')
         response = self.client.post(r('subscriptions:new'), invalid_data)
