@@ -1,12 +1,14 @@
 import uuid as uuid
 from django.db import models
 
+from eventex.subscriptions.validators import validate_cpf
+
 
 class Subscription(models.Model):
     name = models.CharField('nome', max_length=100)
-    cpf = models.CharField('CPF', max_length=11)
-    email = models.EmailField('e-amil')
-    phone = models.CharField('Telefone', max_length=20)
+    cpf = models.CharField('CPF', max_length=11, validators=[validate_cpf])
+    email = models.EmailField('e-amil', blank=True)
+    phone = models.CharField('Telefone', max_length=20, blank=True)
     created_at = models.DateTimeField('Criado em', auto_now_add=True)
     paid = models.BooleanField('pago', default=False)
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)

@@ -22,7 +22,11 @@ def create(request):
                       {'form': form})
 
     # Save on database and get record filds
-    subscription = Subscription.objects.create(**form.cleaned_data)
+    # Modo de escrever quando usamos forms.ModelForm
+    subscription = form.save()
+
+    # Modo de escrever quando usando o forms.Form
+    # subscription = Subscription.objects.create(**form.cleaned_data)
 
     # Send email
     _send_mail('Confirmação de inscrição',
