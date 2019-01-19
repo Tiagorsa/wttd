@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, get_object_or_404
 
-from eventex.core.models import Speaker, Talk
+from eventex.core.models import Speaker, Talk, Course
 
 
 def home(request):
@@ -18,9 +18,18 @@ def speaker_detail(request, slug):
 
 def talk_list(request):
     from django.http import HttpResponse
+    speaker = Speaker(name='Henrique Bastos', slug='henrique-bastos', photo='http://hbn.link/hb-pic')
+    courses = [
+        dict(title='Título do Curso',
+             start='09:00',
+             description='Descrição do curso.',
+             speakers={'all': [speaker]})
+    ]
+
     context = {
         'morning_talks': Talk.objects.at_morning(),
-        'afternoon_talks': Talk.objects.at_afternoon()
+        'afternoon_talks': Talk.objects.at_afternoon(),
+        'courses': Course.objects.all(),
         #'morning_talks': Talk.objects.filter(start__lt='12:00'),
         #'afternoon_talks': Talk.objects.filter(start__gte='12:00')
         #'morning_talks': [Talk(title='Título da Palestra', start='10:00', description='Descrição da palestra.')],

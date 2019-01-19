@@ -43,7 +43,8 @@ class Contact(models.Model):
         verbose_name_plural = 'contatos'
 
 
-class Talk(models.Model):
+#class Talk(models.Model):
+class Activity(models.Model):
     title = models.CharField('título', max_length=200)
     start = models.TimeField('início', null=True, blank=True)
     description = models.TextField('descrição', blank=True)
@@ -52,6 +53,7 @@ class Talk(models.Model):
     objects = PeriodManager()
     
     class Meta:
+        abstract = True
         verbose_name = 'palestra'
         verbose_name_plural = 'palestras'
     
@@ -64,3 +66,14 @@ class Talk(models.Model):
     #photo = 'http://hbn.link/hopper-pic'
     #description = 'Programadora e almirante'
     ##description = 'Programadora e almirante<br/>Inventora do compulador, criadora da linguagem de programação Flow-Matic serviu de base para a linguagem COBOL permitindo a popularização das aplicações comerciais.'
+
+
+class Talk(Activity):
+    pass
+
+
+class Course(Activity):
+    slots = models.IntegerField()
+    class Meta:
+        verbose_name = 'curso'
+        verbose_name_plural = 'cursos'
