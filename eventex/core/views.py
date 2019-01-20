@@ -17,19 +17,24 @@ def speaker_detail(request, slug):
 
 
 def talk_list(request):
-    from django.http import HttpResponse
-    speaker = Speaker(name='Henrique Bastos', slug='henrique-bastos', photo='http://hbn.link/hb-pic')
-    courses = [
-        dict(title='Título do Curso',
-             start='09:00',
-             description='Descrição do curso.',
-             speakers={'all': [speaker]})
-    ]
+    # from django.http import HttpResponse
+    # speaker = Speaker(name='Henrique Bastos', slug='henrique-bastos', photo='http://hbn.link/hb-pic')
+    # courses = [ dict(title='Título do Curso', start='09:00', description='Descrição do curso.', speakers={'all': [speaker]}) ]
+    #at_morning = list(Talk.objects.at_morning()) + list(Course.objects.at_morning())
+    #at_morning.sort(key=lambda o: o.start)
+    #at_afternoon = list(Talk.objects.at_afternoon()) + list(Course.objects.at_afternoon())
+    #at_afternoon.sort(key=lambda o: o.start)
 
     context = {
         'morning_talks': Talk.objects.at_morning(),
         'afternoon_talks': Talk.objects.at_afternoon(),
-        'courses': Course.objects.all(),
+
+        #'morning_talks': at_morning,
+        #'afternoon_talks': at_afternoon,
+
+        #'morning_talks': Talk.objects.at_morning(),
+        #'afternoon_talks': Talk.objects.at_afternoon(),
+        #'courses': Course.objects.all(),
         #'morning_talks': Talk.objects.filter(start__lt='12:00'),
         #'afternoon_talks': Talk.objects.filter(start__gte='12:00')
         #'morning_talks': [Talk(title='Título da Palestra', start='10:00', description='Descrição da palestra.')],

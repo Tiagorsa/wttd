@@ -44,7 +44,8 @@ class Contact(models.Model):
 
 
 #class Talk(models.Model):
-class Activity(models.Model):
+#class Activity(models.Model):
+class Talk(models.Model):
     title = models.CharField('título', max_length=200)
     start = models.TimeField('início', null=True, blank=True)
     description = models.TextField('descrição', blank=True)
@@ -53,7 +54,8 @@ class Activity(models.Model):
     objects = PeriodManager()
     
     class Meta:
-        abstract = True
+        #abstract = True
+        ordering = ['start']
         verbose_name = 'palestra'
         verbose_name_plural = 'palestras'
     
@@ -68,12 +70,15 @@ class Activity(models.Model):
     ##description = 'Programadora e almirante<br/>Inventora do compulador, criadora da linguagem de programação Flow-Matic serviu de base para a linguagem COBOL permitindo a popularização das aplicações comerciais.'
 
 
-class Talk(Activity):
-    pass
+#class Talk(Activity):
+#    pass
 
 
-class Course(Activity):
+class Course(Talk):
     slots = models.IntegerField()
+    objects = PeriodManager()
+
     class Meta:
         verbose_name = 'curso'
         verbose_name_plural = 'cursos'
+
