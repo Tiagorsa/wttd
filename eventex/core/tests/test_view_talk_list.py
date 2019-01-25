@@ -10,7 +10,8 @@ class TalkListGet(TestCase):
         t2 = Talk.objects.create(title='Título da Palestra', start='13:00', description='Descrição da palestra.')
         c1 = Course.objects.create(title='Título do Curso', start='09:00', description='Descrição do curso.', slots=20)
 
-        speaker = Speaker.objects.create(name='Henrique Bastos', slug='henrique-bastos', website='http://henriquebastos.net')
+        speaker = Speaker.objects.create(name='Henrique Bastos', slug='henrique-bastos',
+                                         website='http://henriquebastos.net')
 
         t1.speakers.add(speaker)
         t2.speakers.add(speaker)
@@ -47,6 +48,7 @@ class TalkListGet(TestCase):
         for key in variables:
             with self.subTest():
                 self.assertIn(key, self.resp.context)
+
 
 class TalkListGetEmpty(TestCase):
     def test_get_empty(self):

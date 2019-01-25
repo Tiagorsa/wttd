@@ -26,9 +26,9 @@ class SpeakerModelAdmin(admin.ModelAdmin):
 
     def email(self, obj):
         return obj.contact_set.emails().first()
-        #return obj.contact_set(manager='emails').first()
-        #return Contact.emails.filter(speaker=obj).first()
-        #return Contact.objects.filter(kind=Contact.EMAIL, speaker=obj).first()
+        # return obj.contact_set(manager='emails').first()
+        # return Contact.emails.filter(speaker=obj).first()
+        # return Contact.objects.filter(kind=Contact.EMAIL, speaker=obj).first()
 
     email.short_description = 'Email'
 
@@ -40,10 +40,14 @@ class SpeakerModelAdmin(admin.ModelAdmin):
 
     phone.short_description = 'Telefone'
 
+
 class TalkModelAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
+        ## Aqui pode quebrar o ModelAdmin do Task se tirar o parênteses do "super" e não da erro nos testes,
+        ## tem que implementar teste de instanciação do get_queryset
         qs = super().get_queryset(request)
         return qs.filter(course=None)
+
 
 admin.site.register(Speaker, SpeakerModelAdmin)
 admin.site.register(Talk, TalkModelAdmin)
