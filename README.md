@@ -10,14 +10,18 @@ Exercicio Eventex
 cd wtdd
 python -m venv .wttd
 source .wttd/bin/activate
-pip -install -r requirements-dev.txt
-cd contrib/env-sample .env
+pip install -r requirements-dev.txt
+cp contrib/env-sample .env
 python manage.py test
+heroku git:remote -a eventex-tiagosa
 
 #Como fazer o deploy
 1. Crie uma instância no Heroku
 2. Envie as configurações para o Heorku
 3. Defina uma SECRET_KEY segura para a instância
+3.1. $ manage generate_secret_key 
+3.2. $ manage migrate
+3.3. $ manage createsuperuser
 4. Defina DEBUG=False
 5. Configure o serviço de email
 6. Envie o código para o Heroku
