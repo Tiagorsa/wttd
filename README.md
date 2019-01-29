@@ -6,7 +6,7 @@ Turma WTTD - Dezembro 2018
 
 Exercicio Eventex
 
-
+#Comandos ativar develop
 cd wtdd
 python -m venv .wttd
 source .wttd/bin/activate
