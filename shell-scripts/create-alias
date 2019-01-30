@@ -1,6 +1,7 @@
 echo '' >> ~/.bashrc
 echo '# Virtual env alias' >> ~/.bashrc
 echo "alias act='source "\"."\"\`basename "\$PWD"\`"/bin/activate"'" >> ~/.bashrc
+echo "alias cve='python -m venv "."`basename $PWD`'"  >> ~/.bashrc
 echo '' >> ~/.bashrc
 echo '# Django alias' >> ~/.bashrc
 echo "alias manage='python \$VIRTUAL_ENV/../manage.py'" >> ~/.bashrc
